@@ -93,12 +93,6 @@ def get_lowest_average_rank_match():
     return matches[0]
 
 def get_random_match_id_and_replay_url():
-    matchesUrl = "https://api.opendota.com/api/publicMatches"
-    publicMatchesResponse = requests.get(matchesUrl).json()
-    
-    if not publicMatchesResponse:
-        return None, None
-
     match = get_lowest_average_rank_match()
     match_id = match['match_id']
     cluster = match.get('cluster')
