@@ -1,0 +1,343 @@
+2023-07-19 16:23:16,854 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:17,522 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:18,529 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:18,714 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:18,717 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:19,610 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:19,616 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:19,618 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:19,813 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:20,818 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:21,004 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:21,007 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:21,057 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:21,058 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:21,060 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:21,257 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:22,261 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:22,448 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:22,451 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:22,505 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:22,505 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:22,507 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:22,766 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:23,771 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:23,973 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:23,976 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:24,021 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:24,022 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:24,024 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:24,232 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:25,237 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:25,423 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:25,426 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:25,430 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:25,431 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:25,433 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:25,674 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:26,678 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:26,864 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:26,867 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:26,871 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:26,872 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:26,874 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:27,067 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:28,071 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:28,270 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:28,273 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:28,278 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:28,278 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:28,280 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:28,471 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:29,475 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:29,679 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:29,682 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:29,686 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:29,687 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:29,689 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:29,898 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:30,902 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:31,087 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:31,090 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:31,094 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:31,096 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:31,098 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:31,299 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:32,303 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:32,491 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:32,495 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:32,499 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:32,499 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:32,501 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:32,692 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:33,696 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:33,884 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:33,887 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:33,891 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:33,891 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:33,893 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:34,089 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:35,095 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:35,277 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:35,280 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:36,085 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:36,085 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:36,087 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:36,280 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:37,286 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:37,589 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:37,592 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:37,637 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:37,638 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:37,640 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:37,845 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:38,849 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:39,040 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:39,043 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:39,096 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:39,096 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:39,098 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:39,294 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:40,298 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:40,484 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:40,487 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:40,491 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:40,492 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:40,494 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:40,683 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:41,694 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:41,881 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:41,884 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:41,888 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:41,888 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:41,890 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:42,088 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:43,092 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:43,278 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:43,281 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:43,286 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:23:43,286 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:23:43,288 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:43,482 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:23:44,486 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:23:44,672 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:23:49,793 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:23:50,564 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:02,549 - charset_normalizer - DEBUG - Encoding detection: ascii is most likely the one.
+2023-07-19 16:24:02,659 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:07,030 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:07,223 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:08,228 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:08,419 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:08,422 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:09,311 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:13,458 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:13,460 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:13,660 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:14,665 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:14,856 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:14,860 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:14,864 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:16,313 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:16,315 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:16,519 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:17,523 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:17,712 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:17,715 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:17,720 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:19,366 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:19,368 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:19,559 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:20,564 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:20,764 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:20,768 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:21,753 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:21,754 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:21,756 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:22,045 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:23,050 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:23,239 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248294612 HTTP/1.1" 200 None
+2023-07-19 16:24:24,243 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:24,430 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:24,433 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:24,479 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:24,479 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:24,481 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:24,783 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:25,787 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:26,468 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248294613 HTTP/1.1" 200 None
+2023-07-19 16:24:27,473 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:27,657 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:27,660 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:27,667 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:27,667 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:27,669 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:27,862 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:28,866 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:29,185 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248294613 HTTP/1.1" 200 None
+2023-07-19 16:24:30,189 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:30,390 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:30,393 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:30,492 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:30,492 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:30,494 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:30,688 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:31,694 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:31,885 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248294810 HTTP/1.1" 200 None
+2023-07-19 16:24:32,889 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:33,073 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:33,076 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:33,081 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:33,081 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:33,083 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:33,271 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:34,276 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:34,602 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248294812 HTTP/1.1" 200 None
+2023-07-19 16:24:35,606 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:35,791 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:35,794 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:35,798 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:35,799 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:35,801 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:35,995 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:36,999 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:37,188 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248294812 HTTP/1.1" 200 None
+2023-07-19 16:24:38,193 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:38,380 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:38,383 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:38,387 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:38,387 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:38,389 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:38,579 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:39,584 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:39,778 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248294812 HTTP/1.1" 200 None
+2023-07-19 16:24:40,783 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:40,972 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:40,975 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:41,876 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:41,876 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:24:41,879 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:42,076 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:24:43,081 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:43,274 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248295319 HTTP/1.1" 200 None
+2023-07-19 16:24:44,281 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:24:44,483 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:24:44,487 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:24:44,491 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:24:48,712 - charset_normalizer - DEBUG - Encoding detection: ascii is most likely the one.
+2023-07-19 16:25:17,638 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:17,640 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:17,844 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:18,849 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:19,042 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296118 HTTP/1.1" 200 None
+2023-07-19 16:25:20,047 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:20,360 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:20,364 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:21,176 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:21,177 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:21,179 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:21,371 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:22,376 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:22,566 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296210 HTTP/1.1" 200 None
+2023-07-19 16:25:23,571 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:23,760 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:23,763 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:23,771 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:23,771 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:23,774 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:23,971 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:24,975 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:25,597 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296210 HTTP/1.1" 200 None
+2023-07-19 16:25:26,612 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:26,796 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:26,799 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:26,847 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:26,847 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:26,849 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:27,047 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:28,052 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:28,242 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296607 HTTP/1.1" 200 None
+2023-07-19 16:25:29,247 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:29,438 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:29,441 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:29,445 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:29,446 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:29,448 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:29,640 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:30,644 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:30,844 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296607 HTTP/1.1" 200 None
+2023-07-19 16:25:31,847 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:32,063 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:32,066 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:32,071 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:32,071 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:32,073 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:32,264 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:33,268 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:33,462 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296609 HTTP/1.1" 200 None
+2023-07-19 16:25:34,467 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:34,653 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:34,656 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:34,661 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:34,661 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:34,663 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:34,855 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:35,859 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:36,059 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296703 HTTP/1.1" 200 None
+2023-07-19 16:25:37,065 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:37,250 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:37,254 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:38,062 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:38,062 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:38,064 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:38,262 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:39,266 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:39,455 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296805 HTTP/1.1" 200 None
+2023-07-19 16:25:40,459 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:40,650 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:40,653 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:40,697 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:40,697 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:40,699 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:40,888 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:41,894 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:42,096 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296805 HTTP/1.1" 200 None
+2023-07-19 16:25:43,101 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:43,284 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:43,287 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:43,291 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:43,292 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:43,294 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:43,506 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:44,511 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:44,702 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248296805 HTTP/1.1" 200 None
+2023-07-19 16:25:45,707 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:45,965 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:45,968 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:25:46,020 - urllib3.connectionpool - DEBUG - http://replay231.valve.net:80 "GET /570/7248294609_1273376428.dem.bz2 HTTP/1.1" 404 178
+2023-07-19 16:25:46,020 - __main__ - ERROR - Error fetching replay from url http://replay231.valve.net/570/7248294609_1273376428.dem.bz2. Status code: 404
+2023-07-19 16:25:46,022 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:46,224 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:25:47,228 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:47,423 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248297415 HTTP/1.1" 200 None
+2023-07-19 16:25:48,428 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:25:48,620 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248294609 HTTP/1.1" 200 None
+2023-07-19 16:25:48,623 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay231.valve.net:80
+2023-07-19 16:39:11,472 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:39:11,704 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:39:12,709 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:39:12,907 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248315718 HTTP/1.1" 200 None
+2023-07-19 16:39:13,912 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:39:14,102 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248314817 HTTP/1.1" 200 None
+2023-07-19 16:39:14,105 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay154.valve.net:80
+2023-07-19 16:39:15,560 - urllib3.connectionpool - DEBUG - http://replay154.valve.net:80 "GET /570/7248314817_1465632887.dem.bz2 HTTP/1.1" 200 38983680
+2023-07-19 16:39:22,500 - __main__ - DEBUG - Successfully downloaded replay. Playing 7248314817.dem
+2023-07-19 16:40:06,689 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:40:06,980 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches HTTP/1.1" 200 None
+2023-07-19 16:40:07,985 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:40:08,332 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/publicMatches?less_than_match_id=7248317210 HTTP/1.1" 200 None
+2023-07-19 16:40:09,342 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.opendota.com:443
+2023-07-19 16:40:09,540 - urllib3.connectionpool - DEBUG - https://api.opendota.com:443 "GET /api/replays?match_id=7248314817 HTTP/1.1" 200 None
+2023-07-19 16:40:09,543 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): replay154.valve.net:80
+2023-07-19 16:40:09,612 - urllib3.connectionpool - DEBUG - http://replay154.valve.net:80 "GET /570/7248314817_1465632887.dem.bz2 HTTP/1.1" 200 38983680
+2023-07-19 16:40:15,456 - __main__ - DEBUG - Successfully downloaded replay. Playing 7248314817.dem

@@ -4,18 +4,25 @@ import requests
 import subprocess
 import random
 import bz2
+import logging
+
+
+logging.basicConfig(filename='app.log',
+                    level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 # Initialize Dota 2 API credentials
 try:
     from local_settings import DOTA2_CLIENT_PATH, REPLAY_PATH
 except ImportError:
-    print("Could not import local settings")
+    logger.error("Could not import local settings")
 
 def download_replay(replay_url, match_id):
     response = requests.get(replay_url, stream=True)
 
     if response.status_code != 200:
-        print(f"Error fetching replay: {response.status_code}")
+        logger.error(f"Error fetching replay from url {replay_url}. Status code: {response.status_code}")
         return None
 
     replay_download_path = f"{REPLAY_PATH}\\{match_id}.dem.bz2"
@@ -42,18 +49,21 @@ def delete_file(replay_file_name):
     os.remove(f"{REPLAY_PATH}\\{replay_file_name}")
 
 def main():
+    latest_match_id = None
     while True:
         # Download a Dota 2 replay
-        match_id, replay_url = get_random_match_id_and_replay_url()  # Implement this function to get a random match_id and replay_url
+        match_id, replay_url = get_random_match_id_and_replay_url(latest_match_id)  # Implement this function to get a random match_id and replay_url
         if not match_id or not replay_url:
             continue
 
         replay_file_name = download_replay(replay_url, match_id)
 
         if not replay_file_name:
+            latest_match_id = match_id
             continue
 
         # Play the downloaded replay
+        logger.debug(f"Successfully downloaded replay. Playing {replay_file_name}")
         play_replay(replay_file_name)
 
         # Delete the replay file
@@ -91,9 +101,9 @@ def get_lowest_average_rank_match(last_match_id=None):
 
     return matches[0]
 
-def get_random_match_id_and_replay_url():
+def get_random_match_id_and_replay_url(latest_match_id):
     
-    match_id = None
+    match_id = latest_match_id
     replayResponse = []
     while not replayResponse:
         match = get_lowest_average_rank_match(match_id)
