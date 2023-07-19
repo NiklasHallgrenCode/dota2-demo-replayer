@@ -5,9 +5,12 @@ import subprocess
 import random
 import bz2
 import logging
+from datetime import date
 
-
-logging.basicConfig(filename='app.log',
+today = date.today()
+formatted_date = today.strftime("%Y-%m-%d")
+print(formatted_date)
+logging.basicConfig(filename=f'{formatted_date}.log',
                     level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
