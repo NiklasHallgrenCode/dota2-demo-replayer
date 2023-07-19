@@ -59,10 +59,9 @@ def main():
         # Delete the replay file
         delete_file(replay_file_name)
 
-def get_lowest_average_rank_match():
+def get_lowest_average_rank_match(last_match_id=None):
     url = "https://api.opendota.com/api/publicMatches"
     matches = []
-    last_match_id = None
 
     while not matches:
         params = {}
@@ -79,7 +78,7 @@ def get_lowest_average_rank_match():
             
             if (match.get('lobby_type') == 7 and
                     match.get('avg_mmr') is not None and
-                    match['avg_mmr'] < 700):
+                    match['avg_mmr'] < 500):
                 matches.append(match)
 
         matches = sorted(matches, key=lambda x: x['avg_mmr'])
@@ -93,14 +92,23 @@ def get_lowest_average_rank_match():
     return matches[0]
 
 def get_random_match_id_and_replay_url():
-    match = get_lowest_average_rank_match()
-    match_id = match['match_id']
-    cluster = match.get('cluster')
+    
+    match_id = None
+    replayResponse = []
+    while not replayResponse:
+        match = get_lowest_average_rank_match(match_id)
+        match_id = match['match_id']
+        cluster = match.get('cluster')
 
-    saltUrl = f"https://api.opendota.com/api/replays?match_id={match_id}"
-
-    replayResponse = requests.get(saltUrl).json()
+        saltUrl = "https://api.opendota.com/api/replays"
+        payload = {"match_id": match_id}
+        replayResponse = requests.get(saltUrl, params=payload).json()
+        
     replay = replayResponse[0]
+
+
+
+
     replay_salt = replay.get('replay_salt')
 
     if not cluster or not replay_salt:
