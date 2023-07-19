@@ -9,8 +9,8 @@ This downloads Dota 2 replays and replays them in a loop.
 - Add loading screen between games
 - Launch in player perspective
 - Add ability to vote for player perspective between games using Twitch chat
- - Should include player heroes
- - Should include player MMR
+  - Should include player heroes
+  - Should include player MMR
 - Add !info command explaining the stream
 
 ### Minor
