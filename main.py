@@ -44,7 +44,7 @@ def download_replay(replay_url, match_id):
     return f"{match_id}.dem"
 
 def play_replay(replay_file_name):
-    command = f"{DOTA2_CLIENT_PATH} -console -novid +playdemo /replays/{replay_file_name} +demo_quitafterplayback 1"
+    command = f"{DOTA2_CLIENT_PATH} -console -novid +playdemo /replays/{replay_file_name} +demo_quitafterplayback 1 +dota_spectator_mode 3"
     process = subprocess.Popen(command, shell=True)
     process.wait()
 
