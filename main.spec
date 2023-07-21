@@ -8,7 +8,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('heroData.json', '.'), ('local_settings.py', '.'), ('background_white.jpg', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

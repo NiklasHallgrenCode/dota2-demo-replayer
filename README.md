@@ -4,11 +4,10 @@ With a lot of help from Chat GPT.
 
 This downloads Dota 2 replays and replays them in a loop.
 
-## TODO:
+## TODO
 
 ### Major
 
-- Add loading screen between games
 - Add ability to vote for player perspective between games using Twitch chat
   - Should include player heroes
   - Should include player MMR
@@ -22,3 +21,5 @@ This downloads Dota 2 replays and replays them in a loop.
 - Predict winner with channel points
 - Takes too long after ending a game before Dota quits
 - Show fight stats after a fight?
+- Improve logging
+- Dota 2 is blurry when starting using +playdemo
