@@ -20,5 +20,4 @@ This downloads Dota 2 replays and replays them in a loop.
 - Show fight stats after a fight?
 - Improve logging
 - Dota 2 is blurry when starting using +playdemo
-- Load game during loading screen rather than after
 - Only include games longer than 25 minutes

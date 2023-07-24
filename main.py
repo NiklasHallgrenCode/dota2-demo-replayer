@@ -85,9 +85,11 @@ def main():
             heroes = json.load(file)
 
         while True:
-            match, replay_url, new_latest_match_id = get_random_match_and_replay_url(
-                latest_match_id
-            )
+            (
+                match,
+                replay_url,
+                new_latest_match_id,
+            ) = get_random_match_and_replay_url(latest_match_id)
 
             latest_match_id = new_latest_match_id
             if not match or not replay_url:
@@ -107,7 +109,7 @@ def main():
             )
 
             process[0].set_command(
-                f"{DOTA2_CLIENT_PATH} -console -novid +playdemo /replays/{replay_file_name} +demo_quitafterplayback 1 +dota_spectator_mode 3"
+                f"{DOTA2_CLIENT_PATH} -console -novid +playdemo /replays/{replay_file_name} +demo_quitafterplayback 1 +dota_spectator_mode 3 +demo_pause"
             )
             processesReplayFileNamesMatches.append(process)
             processToExecute = processesReplayFileNamesMatches[0][0]
@@ -122,11 +124,10 @@ def main():
 
             if not processToExecute.is_running():
                 match = processesReplayFileNamesMatches[0][2]
-                generate_loadscreen_image(match, heroes)
                 processToExecute.execute()
-                time.sleep(25)
-                x, y = 1897, 81  # close spectator panel
-                pyautogui.click(x, y)
+                generate_loadscreen_image(match, heroes)
+                pyautogui.click(1778, 128)  # resume game
+                pyautogui.click(1897, 81)  # close spectator panel
                 if fileToDelete:
                     delete_file(fileToDelete)
     except Exception as ex:
@@ -263,7 +264,7 @@ def generate_loadscreen_image(match, heroes):
     ws.call(obsrequests.SetCurrentPreviewScene(sceneName=betweenGamesSceneName))
     ws.call(obsrequests.TriggerStudioModeTransition())
 
-    sleepTime = 3 if ISDEBUG else 45
+    sleepTime = 10 if ISDEBUG else 45
     time.sleep(sleepTime)
     ws.call(obsrequests.SetCurrentPreviewScene(sceneName=dotaClientSceneName))
     ws.call(obsrequests.TriggerStudioModeTransition())
