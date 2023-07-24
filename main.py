@@ -124,7 +124,7 @@ def main():
                 match = processesReplayFileNamesMatches[0][2]
                 generate_loadscreen_image(match, heroes)
                 processToExecute.execute()
-                time.sleep(15)
+                time.sleep(25)
                 x, y = 1897, 81  # close spectator panel
                 pyautogui.click(x, y)
                 if fileToDelete:
