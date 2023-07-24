@@ -16,10 +16,10 @@ This downloads Dota 2 replays and replays them in a loop.
 
 ### Minor
 
-- Hide cursor when in game
 - Fix way to install new version while dota is playing
 - Predict winner with channel points
 - Takes too long after ending a game before Dota quits
 - Show fight stats after a fight?
 - Improve logging
 - Dota 2 is blurry when starting using +playdemo
+- Load game during loading screen rather than after

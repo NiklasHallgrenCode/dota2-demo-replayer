@@ -1,2 +1,2 @@
-# Exclude .log files
 **/*.log
+dist/local_settings.py

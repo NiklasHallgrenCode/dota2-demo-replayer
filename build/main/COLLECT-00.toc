@@ -111,41 +111,41 @@
   ('base_library.zip',
    'C:\\Projects\\ReplayDownloader\\build\\main\\base_library.zip',
    'DATA'),
-  ('certifi\\cacert.pem',
-   'C:\\Users\\Niklas\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\certifi\\cacert.pem',
-   'DATA'),
   ('certifi\\py.typed',
    'C:\\Users\\Niklas\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\certifi\\py.typed',
    'DATA'),
-  ('setuptools-65.5.0.dist-info\\LICENSE',
-   'c:\\program '
-   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\LICENSE',
-   'DATA'),
-  ('setuptools-65.5.0.dist-info\\RECORD',
-   'c:\\program '
-   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\RECORD',
-   'DATA'),
-  ('setuptools-65.5.0.dist-info\\WHEEL',
-   'c:\\program '
-   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\WHEEL',
-   'DATA'),
-  ('setuptools-65.5.0.dist-info\\INSTALLER',
-   'c:\\program '
-   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\INSTALLER',
+  ('certifi\\cacert.pem',
+   'C:\\Users\\Niklas\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\certifi\\cacert.pem',
    'DATA'),
   ('setuptools-65.5.0.dist-info\\METADATA',
    'c:\\program '
    'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\METADATA',
    'DATA'),
-  ('setuptools-65.5.0.dist-info\\entry_points.txt',
-   'c:\\program '
-   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\entry_points.txt',
-   'DATA'),
   ('setuptools-65.5.0.dist-info\\REQUESTED',
    'c:\\program '
    'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\REQUESTED',
    'DATA'),
+  ('setuptools-65.5.0.dist-info\\entry_points.txt',
+   'c:\\program '
+   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\entry_points.txt',
+   'DATA'),
+  ('setuptools-65.5.0.dist-info\\LICENSE',
+   'c:\\program '
+   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\LICENSE',
+   'DATA'),
+  ('setuptools-65.5.0.dist-info\\INSTALLER',
+   'c:\\program '
+   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools-65.5.0.dist-info\\RECORD',
+   'c:\\program '
+   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\RECORD',
+   'DATA'),
   ('setuptools-65.5.0.dist-info\\top_level.txt',
    'c:\\program '
    'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools-65.5.0.dist-info\\WHEEL',
+   'c:\\program '
+   'files\\windowsapps\\pythonsoftwarefoundation.python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\lib\\site-packages\\setuptools-65.5.0.dist-info\\WHEEL',
    'DATA')],)

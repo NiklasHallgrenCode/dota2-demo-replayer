@@ -1,7 +1,6 @@
 import importlib
 import json
 import os
-import subprocess
 import time
 import traceback
 import requests
@@ -10,7 +9,7 @@ import logging
 from datetime import date
 from PIL import Image, ImageDraw, ImageFont
 from DeferredProcess import DeferredProcess
-
+from obswebsocket import obsws, requests as obsrequests
 
 today = date.today()
 formatted_date = today.strftime("%Y-%m-%d")
@@ -23,7 +22,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 try:
-    from local_settings import DOTA2_CLIENT_PATH, REPLAY_PATH, ISDEBUG
+    from local_settings import (
+        DOTA2_CLIENT_PATH,
+        REPLAY_PATH,
+        ISDEBUG,
+        OBS_WEBSOCKET_PASSWORD,
+    )
 except ImportError:
     logger.error("Could not import original settings")
 
@@ -36,6 +40,7 @@ if os.path.exists("local_settings.py"):
     DOTA2_CLIENT_PATH = getattr(local_settings, "DOTA2_CLIENT_PATH", DOTA2_CLIENT_PATH)
     REPLAY_PATH = getattr(local_settings, "REPLAY_PATH", REPLAY_PATH)
     ISDEBUG = getattr(local_settings, "ISDEBUG", ISDEBUG)
+    OBS_WEBSOCKET_PASSWORD = getattr(local_settings, "OBS_WEBSOCKET_PASSWORD", "")
 else:
     logger.warning("Could not import local settings. Using original settings")
 
@@ -74,6 +79,7 @@ def main():
     try:
         latest_match_id = None
         processesReplayFileNamesMatches = []
+
         with open("heroData.json", "r") as file:
             heroes = json.load(file)
 
@@ -132,25 +138,40 @@ def get_lowest_average_rank_match(last_match_id=None):
         if last_match_id:
             params["less_than_match_id"] = last_match_id
 
-        response = requests.get(url, params=params).json()
+        exception_triggered = False
+        try:
+            response = requests.get(url, params=params)
+            response.raise_for_status()
+            data = response.json()
+        except requests.ConnectionError:
+            logger.error("Failed to connect to the URL.")
+            exception_triggered = True
+        except requests.Timeout:
+            logger.error("The request timed out.")
+            exception_triggered = True
+        except requests.RequestException as e:
+            logger.error(f"An error occurred while making the request: {e}")
+            exception_triggered = True
+        except json.JSONDecodeError:
+            logger.error("Failed to parse the response as JSON.")
+            exception_triggered = True
+        else:
+            for publicMatch in data:
+                last_match_id = publicMatch["match_id"]
 
-        if not response:
-            break
+                if (
+                    publicMatch.get("lobby_type") == 7
+                    and publicMatch.get("avg_mmr") is not None
+                    and publicMatch["avg_mmr"] < 500
+                ):
+                    publicMatches.append(publicMatch)
 
-        for publicMatch in response:
-            last_match_id = publicMatch["match_id"]
+            publicMatches = sorted(publicMatches, key=lambda x: x["avg_mmr"])
 
-            if (
-                publicMatch.get("lobby_type") == 7
-                and publicMatch.get("avg_mmr") is not None
-                and publicMatch["avg_mmr"] < 500
-            ):
-                publicMatches.append(publicMatch)
+            time.sleep(1)
 
-        publicMatches = sorted(publicMatches, key=lambda x: x["avg_mmr"])
-
-        # Avoid making too many requests in a short period
-        time.sleep(1)
+        if exception_triggered:
+            time.sleep(60)
 
     if not publicMatches:
         return None
@@ -185,7 +206,10 @@ def get_random_match_and_replay_url(latest_match_id):
 def generate_loadscreen_image(match, heroes):
     players = match.get("players")
     player_hero_ids = [player["hero_id"] for player in players]
-    filtered_heroes = [hero for hero in heroes if hero["id"] in player_hero_ids]
+    filtered_heroes = [
+        next(hero for hero in heroes if hero["id"] == hero_id)
+        for hero_id in player_hero_ids
+    ]
 
     image = Image.open("background_white.jpg")
     draw = ImageDraw.Draw(image)
@@ -193,6 +217,12 @@ def generate_loadscreen_image(match, heroes):
 
     top = 50
     left = 50
+    draw.text(
+        (100, 540),
+        "Next game in 45 seconds! These are your heroes. Voting will be added in the future (probably)",
+        (0, 0, 0),
+        font=font,
+    )
     for x in range(10):
         position = (left, top)
 
@@ -210,13 +240,51 @@ def generate_loadscreen_image(match, heroes):
 
     image.save(image_path)
 
+    # OBS Stuff
+    ws = obsws("localhost", 4455, OBS_WEBSOCKET_PASSWORD)
+    ws.connect()
+
+    betweenGamesSceneName = "BetweenGames"
+    dotaClientSceneName = "Dota2Client"
+    input_name = "LoadingScreenImage"
+
+    inputSettings = {"file": image_path}
+
+    ws.call(
+        obsrequests.SetInputSettings(
+            inputName=input_name, inputSettings=inputSettings, overlay=True
+        )
+    )
+
+    ws.call(obsrequests.SetCurrentPreviewScene(sceneName=betweenGamesSceneName))
+    ws.call(obsrequests.TriggerStudioModeTransition())
+
     sleepTime = 3 if ISDEBUG else 45
-    subprocess.Popen(["start", image_path], shell=True)
     time.sleep(sleepTime)
-    os.system("taskkill /F /IM Microsoft.Photos.exe")
+    ws.call(obsrequests.SetCurrentPreviewScene(sceneName=dotaClientSceneName))
+    ws.call(obsrequests.TriggerStudioModeTransition())
+    ws.disconnect()
 
 
 if __name__ == "__main__":
     main()
 
 # pyinstaller --add-data "heroData.json;." --add-data "local_settings.py;." --add-data "background_white.jpg;."  main.py
+
+
+# Available Input Kinds:
+# image_source
+# color_source
+# slideshow
+# browser_source
+# ffmpeg_source
+# text_gdiplus
+# text_ft2_source
+# vlc_source
+# monitor_capture
+# window_capture
+# game_capture
+# dshow_input
+# wasapi_input_capture
+# wasapi_output_capture
+# wasapi_process_output_capture
