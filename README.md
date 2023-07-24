@@ -11,8 +11,6 @@ This downloads Dota 2 replays and replays them in a loop.
 - Add ability to vote for player perspective between games using Twitch chat
   - Should include player heroes
   - Should include player MMR
-- Add !info command explaining the stream
-- Hide spectator panel when launching replay
 
 ### Minor
 
@@ -23,3 +21,4 @@ This downloads Dota 2 replays and replays them in a loop.
 - Improve logging
 - Dota 2 is blurry when starting using +playdemo
 - Load game during loading screen rather than after
+- Only include games longer than 25 minutes

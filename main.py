@@ -10,6 +10,7 @@ from datetime import date
 from PIL import Image, ImageDraw, ImageFont
 from DeferredProcess import DeferredProcess
 from obswebsocket import obsws, requests as obsrequests
+import pyautogui
 
 today = date.today()
 formatted_date = today.strftime("%Y-%m-%d")
@@ -123,6 +124,9 @@ def main():
                 match = processesReplayFileNamesMatches[0][2]
                 generate_loadscreen_image(match, heroes)
                 processToExecute.execute()
+                time.sleep(15)
+                x, y = 1897, 81  # close spectator panel
+                pyautogui.click(x, y)
                 if fileToDelete:
                     delete_file(fileToDelete)
     except Exception as ex:
