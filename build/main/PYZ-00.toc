@@ -1422,6 +1422,9 @@
   ('pycparser.yacctab',
    'C:\\Users\\Niklas\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\pycparser\\yacctab.py',
    'PYMODULE'),
+  ('pydirectinput',
+   'C:\\Users\\Niklas\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\site-packages\\pydirectinput\\__init__.py',
+   'PYMODULE'),
   ('pydoc',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.1264.0_x64__qbz5n2kfra8p0\\Lib\\pydoc.py',

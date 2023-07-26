@@ -4,3 +4,5 @@ REPLAY_PATH = (
 )
 ISDEBUG = True
 OBS_WEBSOCKET_PASSWORD = "UMllRsmk82agMJPO"
+TWITCHTOKEN = "oauth:b56s3t1u3cm9c2omt1p9htu28svlu3"
+TWITCHCHANNELNAME = "dota247heraldheroes"

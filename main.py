@@ -11,6 +11,11 @@ from PIL import Image, ImageDraw, ImageFont
 from DeferredProcess import DeferredProcess
 from obswebsocket import obsws, requests as obsrequests
 import pyautogui
+import socket
+import re
+from collections import Counter
+import random
+import pydirectinput
 
 today = date.today()
 formatted_date = today.strftime("%Y-%m-%d")
@@ -28,6 +33,8 @@ try:
         REPLAY_PATH,
         ISDEBUG,
         OBS_WEBSOCKET_PASSWORD,
+        TWITCHTOKEN,
+        TWITCHCHANNELNAME,
     )
 except ImportError:
     logger.error("Could not import original settings")
@@ -125,9 +132,15 @@ def main():
             if not processToExecute.is_running():
                 match = processesReplayFileNamesMatches[0][2]
                 processToExecute.execute()
-                generate_loadscreen_image(match, heroes)
-                pyautogui.click(1778, 128)  # resume game
+                perspective = generate_loadscreen_image(match, heroes)
                 pyautogui.click(1897, 81)  # close spectator panel
+
+                pydirectinput.press("f11")
+                pyautogui.write(f"dota_spectator_hero_index {perspective - 1}")
+                pydirectinput.press("enter")
+                pyautogui.write("demo_resume")
+                pydirectinput.press("enter")
+                pydirectinput.press("f11")
                 if fileToDelete:
                     delete_file(fileToDelete)
     except Exception as ex:
@@ -200,7 +213,7 @@ def get_random_match_and_replay_url(latest_match_id):
     replay_salt = matchResponse.get("replay_salt")
 
     if not cluster or not replay_salt:
-        return None, None
+        return None, None, new_latest_match_id
 
     replay_url = (
         f"http://replay{cluster}.valve.net/570/{match_id}_{replay_salt}.dem.bz2"
@@ -220,21 +233,37 @@ def generate_loadscreen_image(match, heroes):
     draw = ImageDraw.Draw(image)
     font = ImageFont.truetype("arial.ttf", 40)
 
-    top = 50
-    left = 50
     draw.text(
         (100, 540),
-        "Next game in 45 seconds! These are your heroes. Voting will be added in the future (probably)",
+        "Voting closes and next game starts in 45 seconds!",
         (0, 0, 0),
         font=font,
     )
+
+    top = 50
+    left = 50
+    # Hero names
     for x in range(10):
         position = (left, top)
 
         draw.text(position, filtered_heroes[x]["localized_name"], (0, 0, 0), font=font)
 
         if x == 4:
-            top = 800
+            top += 750
+            left = 50
+        else:
+            left += 300
+
+    # Vote names
+    top = 130
+    left = 50
+    for x in range(10):
+        position = (left, top)
+
+        draw.text(position, f"!vote {x + 1}", (0, 0, 0), font=font)
+
+        if x == 4:
+            top += 750
             left = 50
         else:
             left += 300
@@ -264,11 +293,93 @@ def generate_loadscreen_image(match, heroes):
     ws.call(obsrequests.SetCurrentPreviewScene(sceneName=betweenGamesSceneName))
     ws.call(obsrequests.TriggerStudioModeTransition())
 
-    sleepTime = 10 if ISDEBUG else 45
-    time.sleep(sleepTime)
+    perspective = take_votes()
+    print(perspective)
+
     ws.call(obsrequests.SetCurrentPreviewScene(sceneName=dotaClientSceneName))
     ws.call(obsrequests.TriggerStudioModeTransition())
     ws.disconnect()
+    return perspective
+
+
+def get_irc_socket_object():
+    server = "irc.chat.twitch.tv"
+    port = 6667
+    irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    irc.connect((server, port))
+    irc.send(f"PASS {TWITCHTOKEN}\n".encode("utf-8"))
+    irc.send(f"NICK {TWITCHCHANNELNAME}\n".encode("utf-8"))
+    irc.send(f"JOIN #{TWITCHCHANNELNAME}\n".encode("utf-8"))
+    return irc
+
+
+def take_votes():
+    irc = get_irc_socket_object()
+    irc.settimeout(1)
+    sleepTime = 45 if ISDEBUG else 45
+
+    start_time = time.time()
+    end_time = start_time + sleepTime
+
+    voteMessages = []
+
+    while time.time() < end_time:
+        try:
+            # Get the chat line
+            response = irc.recv(2048).decode("utf-8")
+
+            # Respond to pings from the server, required to keep the connection alive
+            if response.startswith("PING"):
+                irc.send("PONG\n".encode("utf-8"))
+                continue
+
+            responsePattern = re.compile(r":(.*?)!.*?:([^:]+)")
+
+            print(response)
+
+            match = responsePattern.search(response)
+            if match:
+                logger.debug(f"Recieves chat message: {response}")
+                name = match.group(1)
+                message = match.group(2).strip()
+
+                legitVote = re.search(r"!v([1-9]|10)|!vote\s?([1-9]|10)", message)
+                if legitVote:
+                    add_vote(voteMessages, name, message)
+            else:
+                logger.debug(f"Could not read chat message: {response}")
+        except socket.timeout:
+            continue
+
+    irc.close()
+
+    if not voteMessages:
+        return random.randint(1, 10)
+
+    votes = [item[1] for item in voteMessages]
+    count = Counter(votes)
+    return count.most_common(1)[0][0]
+
+
+def add_vote(votes, name, vote):
+    voteChanged = False
+    for arr in votes:
+        if arr[0] == name:
+            arr[1] = vote
+            voteChanged = True
+            break
+    if voteChanged == False:
+        votes.append((name, extract_number(vote)))
+    return votes
+
+
+def extract_number(s):
+    # Search for a number between 1 and 10
+    match = re.search(r"\b(10|[1-9])\b", s)
+    if match:
+        return int(match.group(0))
+    else:
+        return None
 
 
 if __name__ == "__main__":
