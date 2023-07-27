@@ -124,7 +124,7 @@ def main():
 
             if len(processesReplayFileNamesMatches) > 1:
                 if processToExecute.is_running():
-                    processToExecute.wait()
+                    read_chat(processToExecute)
                     fileToDelete = processesReplayFileNamesMatches[0][1]
                     del processesReplayFileNamesMatches[0]
                     processToExecute = processesReplayFileNamesMatches[0][0]
@@ -132,12 +132,9 @@ def main():
             if not processToExecute.is_running():
                 match = processesReplayFileNamesMatches[0][2]
                 processToExecute.execute()
-                perspective = generate_loadscreen_image(match, heroes)
+                generate_loadscreen_image(match, heroes)
                 pyautogui.click(1897, 81)  # close spectator panel
-
                 pydirectinput.press("f11")
-                pyautogui.write(f"dota_spectator_hero_index {perspective - 1}")
-                pydirectinput.press("enter")
                 pyautogui.write("demo_resume")
                 pydirectinput.press("enter")
                 pydirectinput.press("f11")
@@ -255,18 +252,18 @@ def generate_loadscreen_image(match, heroes):
             left += 300
 
     # Vote names
-    top = 130
-    left = 50
-    for x in range(10):
-        position = (left, top)
+    # top = 130
+    # left = 50
+    # for x in range(10):
+    #     position = (left, top)
 
-        draw.text(position, f"!vote {x + 1}", (0, 0, 0), font=font)
+    #     draw.text(position, f"!vote {x + 1}", (0, 0, 0), font=font)
 
-        if x == 4:
-            top += 750
-            left = 50
-        else:
-            left += 300
+    #     if x == 4:
+    #         top += 750
+    #         left = 50
+    #     else:
+    #         left += 300
 
     current_dir = os.getcwd()
     imageName = f'tmpImg_{match["match_id"]}.png'
@@ -293,13 +290,11 @@ def generate_loadscreen_image(match, heroes):
     ws.call(obsrequests.SetCurrentPreviewScene(sceneName=betweenGamesSceneName))
     ws.call(obsrequests.TriggerStudioModeTransition())
 
-    perspective = take_votes()
-    print(perspective)
+    time.sleep(25)
 
     ws.call(obsrequests.SetCurrentPreviewScene(sceneName=dotaClientSceneName))
     ws.call(obsrequests.TriggerStudioModeTransition())
     ws.disconnect()
-    return perspective
 
 
 def get_irc_socket_object():
@@ -313,17 +308,12 @@ def get_irc_socket_object():
     return irc
 
 
-def take_votes():
+def read_chat(process):
     irc = get_irc_socket_object()
     irc.settimeout(1)
-    sleepTime = 45 if ISDEBUG else 45
+    latestFollowingCommandTime = time.time() - 30
 
-    start_time = time.time()
-    end_time = start_time + sleepTime
-
-    voteMessages = []
-
-    while time.time() < end_time:
+    while process.is_running() is True:
         try:
             # Get the chat line
             response = irc.recv(2048).decode("utf-8")
@@ -338,39 +328,24 @@ def take_votes():
             print(response)
 
             match = responsePattern.search(response)
+
             if match:
                 logger.debug(f"Recieves chat message: {response}")
                 name = match.group(1)
                 message = match.group(2).strip()
 
-                legitVote = re.search(r"!v([1-9]|10)|!vote\s?([1-9]|10)", message)
-                if legitVote:
-                    add_vote(voteMessages, name, message)
+                followCommand = re.search(r"(!f\s*|f\s+)(10|[1-9])", message)
+                if followCommand and latestFollowingCommandTime < time.time() - 30:
+                    number = f"{followCommand.group(2)}"
+                    print(number)
+                    pydirectinput.press(number)
+                    latestFollowingCommandTime = time.time()
             else:
                 logger.debug(f"Could not read chat message: {response}")
         except socket.timeout:
             continue
 
     irc.close()
-
-    if not voteMessages:
-        return random.randint(1, 10)
-
-    votes = [item[1] for item in voteMessages]
-    count = Counter(votes)
-    return count.most_common(1)[0][0]
-
-
-def add_vote(votes, name, vote):
-    voteChanged = False
-    for arr in votes:
-        if arr[0] == name:
-            arr[1] = vote
-            voteChanged = True
-            break
-    if voteChanged == False:
-        votes.append((name, extract_number(vote)))
-    return votes
 
 
 def extract_number(s):
@@ -379,7 +354,7 @@ def extract_number(s):
     if match:
         return int(match.group(0))
     else:
-        return None
+        return 0
 
 
 if __name__ == "__main__":
