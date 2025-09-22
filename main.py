@@ -1,150 +1,210 @@
-import importlib
 import json
 import os
 import time
 import traceback
+from dotenv import load_dotenv
 import requests
 import bz2
 import logging
 from datetime import date
-from PIL import Image, ImageDraw, ImageFont
-from DeferredProcess import DeferredProcess
-from obswebsocket import obsws, requests as obsrequests
-import pyautogui
-import socket
-import re
-from collections import Counter
-import random
-import pydirectinput
+import csv
+
+for name, value in os.environ.items():
+    print("{0}: {1}".format(name, value))
 
 today = date.today()
 formatted_date = today.strftime("%Y-%m-%d")
-print(formatted_date)
+
 logging.basicConfig(
     filename=f"{formatted_date}.log",
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
+
 logger = logging.getLogger(__name__)
 
-try:
-    from local_settings import (
-        DOTA2_CLIENT_PATH,
-        REPLAY_PATH,
-        ISDEBUG,
-        OBS_WEBSOCKET_PASSWORD,
-        TWITCHTOKEN,
-        TWITCHCHANNELNAME,
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+console_handler.setFormatter(formatter)
+
+logger.addHandler(console_handler)
+
+REGION_MAP = {
+    1: "US WEST",
+    2: "US EAST",
+    3: "EUROPE",
+    5: "SINGAPORE",
+    6: "DUBAI",
+    7: "AUSTRALIA",
+    8: "STOCKHOLM",
+    9: "AUSTRIA",
+    10: "BRAZIL",
+    11: "SOUTHAFRICA",
+    12: "PW SHANGHAI",
+    13: "PW UNICOM",
+    14: "CHILE",
+    15: "PERU",
+    16: "INDIA",
+    17: "PW GUANGDONG",
+    18: "PW ZHEJIANG",
+    19: "JAPAN",
+    20: "PW WUHAN",
+    25: "PW TIANJIN",
+    37: "TAIWAN",
+    38: "ARGENTINA",
+}
+
+ALLOWED_REGION_IDS = {1, 2, 3, 8, 9}  # US WEST, US EAST, EUROPE, STOCKHOLM, AUSTRIA
+
+load_dotenv()
+
+REPLAY_PATH = os.getenv("REPLAY_PATH")
+REPLAY_CSV = os.getenv("REPLAY_CSV")
+
+if not REPLAY_PATH or not REPLAY_CSV:
+    raise Exception(
+        "You need to set local variables REPLAY_CSV and REPLAY_PATH in settings"
     )
-except ImportError:
-    logger.error("Could not import original settings")
-
-if os.path.exists("local_settings.py"):
-    spec = importlib.util.spec_from_file_location(
-        "local_settings", "./local_settings.py"
-    )
-    local_settings = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(local_settings)
-    DOTA2_CLIENT_PATH = getattr(local_settings, "DOTA2_CLIENT_PATH", DOTA2_CLIENT_PATH)
-    REPLAY_PATH = getattr(local_settings, "REPLAY_PATH", REPLAY_PATH)
-    ISDEBUG = getattr(local_settings, "ISDEBUG", ISDEBUG)
-    OBS_WEBSOCKET_PASSWORD = getattr(local_settings, "OBS_WEBSOCKET_PASSWORD", "")
-else:
-    logger.warning("Could not import local settings. Using original settings")
 
 
-def download_replay(replay_url, match_id):
-    response = requests.get(replay_url, stream=True)
+def main():
+    try:
+        create_csv()
+        latest_match_id = None
+        while True:
+            with open(REPLAY_CSV, mode="r") as file:
+                csv_reader = csv.reader(file)
+                my_list = [row[0] for row in csv_reader if row]
 
-    if response.status_code != 200:
-        logger.error(
-            f"Error fetching replay from url {replay_url}. Status code: {response.status_code}"
+            if len(my_list) > 4:
+                logger.debug(
+                    f"Number of items in the list: {len(my_list)}. Not adding more."
+                )
+                time.sleep(600)
+                continue
+
+            publicMatches, new_latest_match_id = get_matches(latest_match_id)
+
+            latest_match_id = new_latest_match_id
+            if not publicMatches:
+                continue
+
+            download_replay(publicMatches)
+
+    except Exception as ex:
+        logger.error(f"An error occurred: {ex}\n{traceback.format_exc()}")
+
+
+def create_csv():
+    if not os.path.exists(REPLAY_CSV):
+        with open(REPLAY_CSV, mode="w", newline="") as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow([])
+
+            logger.debug(f"Empty CSV file '{REPLAY_CSV}' has been created.")
+    else:
+        logger.debug(
+            f"CSV file '{REPLAY_CSV}' already exists. No new file was created."
         )
-        return None
 
-    replay_download_path = f"{REPLAY_PATH}\\{match_id}.dem.bz2"
-    with open(replay_download_path, "wb") as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            f.write(chunk)
 
-    extracted_replay_path = f"{REPLAY_PATH}\\{match_id}.dem"
-    with bz2.open(replay_download_path, "rb") as source_file, open(
-        extracted_replay_path, "wb"
-    ) as dest_file:
-        for data in iter(lambda: source_file.read(8192), b""):
-            dest_file.write(data)
+def parse_replay(matchId):
+    parseUrl = f"https://api.opendota.com/api/request/{matchId}"
+    requests.post(parseUrl)
 
-    delete_file(f"{match_id}.dem.bz2")
 
-    return f"{match_id}.dem"
+def download_replay(matches):
+    matchGetUrl = "https://api.opendota.com/api/matches/"
+    matchResponses = []
+
+    for match in matches:
+        matchId = match.get("match_id")
+
+        currentMatchGetUrl = matchGetUrl + str(matchId)
+
+        parseRequestSent = False
+
+        while True:
+            matchResponse = requests.get(currentMatchGetUrl)
+
+            if matchResponse.status_code != 200:
+                logger.error(
+                    f"Error making get replay call {currentMatchGetUrl}. Status code: {matchResponse.status_code}"
+                )
+                return None
+
+            matchResponseJson = matchResponse.json()
+
+            if matchResponseJson and matchResponseJson.get("replay_url") is not None:
+                matchResponses.append(matchResponseJson)
+                break
+            elif not parseRequestSent:
+                logger.debug(
+                    f"Request for match {matchId} failed due to not being parsed. Sending parse reqeust"
+                )
+                parse_replay(matchId)
+                parseRequestSent = True
+                time.sleep(10)
+            else:
+                logger.debug(
+                    f"Match with id {matchId} is still not parsed. Waiting 60 seconds and trying again"
+                )
+                time.sleep(60)
+
+    for match in matchResponses:
+        replay_url = match.get("replay_url")
+        match_id = match.get("match_id")
+
+        if not replay_url:
+            continue
+
+        response = requests.get(replay_url, stream=True)
+
+        if response.status_code != 200:
+            logger.error(
+                f"Error fetching replay from url {replay_url}. Status code: {response.status_code}"
+            )
+            continue
+
+        replay_download_path = f"{REPLAY_PATH}\\{match_id}.dem.bz2"
+        with open(replay_download_path, "wb") as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+
+        extracted_replay_path = f"{REPLAY_PATH}\\{match_id}.dem"
+        with bz2.open(replay_download_path, "rb") as source_file, open(
+            extracted_replay_path, "wb"
+        ) as dest_file:
+            for data in iter(lambda: source_file.read(8192), b""):
+                dest_file.write(data)
+
+        delete_file(f"{match_id}.dem.bz2")
+
+        with open(REPLAY_CSV, mode="r") as file:
+            csv_reader = csv.reader(file)
+            my_list = [row[0] for row in csv_reader if row]
+
+        if match_id in my_list:
+            logger.debug(f"The match '{match_id}' already exists in the list.")
+        else:
+            my_list.append(match_id)
+            logger.debug(f"The match '{match_id}' was appended to the list.")
+
+        with open(REPLAY_CSV, mode="w", newline="") as file:
+            csv_writer = csv.writer(file)
+            for item in my_list:
+                csv_writer.writerow([item])
+
+        logger.debug(f"Successfully downloaded and added {match_id} to replay list")
 
 
 def delete_file(replay_file_name):
     os.remove(f"{REPLAY_PATH}\\{replay_file_name}")
 
 
-def main():
-    try:
-        latest_match_id = None
-        processesReplayFileNamesMatches = []
-
-        with open("heroData.json", "r") as file:
-            heroes = json.load(file)
-
-        while True:
-            (
-                match,
-                replay_url,
-                new_latest_match_id,
-            ) = get_random_match_and_replay_url(latest_match_id)
-
-            latest_match_id = new_latest_match_id
-            if not match or not replay_url:
-                continue
-
-            match_id = match["match_id"]
-
-            replay_file_name = download_replay(replay_url, match_id)
-
-            if not replay_file_name:
-                continue
-
-            process = DeferredProcess(), replay_file_name, match
-
-            logger.debug(
-                f"Successfully downloaded replay. Adding {replay_file_name} to queue"
-            )
-
-            process[0].set_command(
-                f"{DOTA2_CLIENT_PATH} -console -novid +playdemo /replays/{replay_file_name} +demo_quitafterplayback 1 +dota_spectator_mode 3 +demo_pause"
-            )
-            processesReplayFileNamesMatches.append(process)
-            processToExecute = processesReplayFileNamesMatches[0][0]
-            fileToDelete = None
-
-            if len(processesReplayFileNamesMatches) > 1:
-                if processToExecute.is_running():
-                    read_chat(processToExecute)
-                    fileToDelete = processesReplayFileNamesMatches[0][1]
-                    del processesReplayFileNamesMatches[0]
-                    processToExecute = processesReplayFileNamesMatches[0][0]
-
-            if not processToExecute.is_running():
-                match = processesReplayFileNamesMatches[0][2]
-                processToExecute.execute()
-                generate_loadscreen_image(match, heroes)
-                pyautogui.click(1897, 81)  # close spectator panel
-                pydirectinput.press("f11")
-                pyautogui.write("demo_resume")
-                pydirectinput.press("enter")
-                pydirectinput.press("f11")
-                if fileToDelete:
-                    delete_file(fileToDelete)
-    except Exception as ex:
-        logger.error(f"An error occurred: {ex}\n{traceback.format_exc()}")
-
-
-def get_lowest_average_rank_match(last_match_id=None):
+def get_matches(last_match_id=None):
     url = "https://api.opendota.com/api/publicMatches"
     publicMatches = []
 
@@ -171,17 +231,65 @@ def get_lowest_average_rank_match(last_match_id=None):
             logger.error("Failed to parse the response as JSON.")
             exception_triggered = True
         else:
+            # First pass: your existing filters
             for publicMatch in data:
                 last_match_id = publicMatch["match_id"]
 
                 if (
                     publicMatch.get("lobby_type") == 7
-                    and publicMatch.get("avg_mmr") is not None
-                    and publicMatch["avg_mmr"] < 500
+                    and publicMatch.get("avg_rank_tier") is not None
+                    and publicMatch["avg_rank_tier"] < 20
                 ):
                     publicMatches.append(publicMatch)
 
-            publicMatches = sorted(publicMatches, key=lambda x: x["avg_mmr"])
+            # Sort like before
+            publicMatches = sorted(publicMatches, key=lambda x: x["avg_rank_tier"])
+
+            # Second pass: fetch match details and keep only allowed regions
+            filtered = []
+            for m in publicMatches:
+                match_id = m["match_id"]
+                try:
+                    detail_resp = requests.get(
+                        f"https://api.opendota.com/api/matches/{match_id}"
+                    )
+                    # Handle rate limits gently
+                    if detail_resp.status_code == 429:
+                        time.sleep(1)
+                        detail_resp = requests.get(
+                            f"https://api.opendota.com/api/matches/{match_id}"
+                        )
+                    detail_resp.raise_for_status()
+                    detail = detail_resp.json()
+                except requests.ConnectionError:
+                    logger.warning(
+                        f"Failed to connect for match {match_id} – skipping."
+                    )
+                    continue
+                except requests.Timeout:
+                    logger.warning(
+                        f"Timeout on details for match {match_id} – skipping."
+                    )
+                    continue
+                except requests.RequestException as e:
+                    logger.warning(f"Detail request failed for {match_id}: {e}")
+                    continue
+                except json.JSONDecodeError:
+                    logger.warning(
+                        f"Failed to parse details for {match_id} – skipping."
+                    )
+                    continue
+
+                region_id = detail.get("region")
+                if region_id in ALLOWED_REGION_IDS:
+                    m = dict(m)
+                    m["region_id"] = region_id
+                    filtered.append(m)
+
+                # small pause to be gentle to the API
+                time.sleep(0.2)
+
+            publicMatches = filtered
 
             time.sleep(1)
 
@@ -191,170 +299,7 @@ def get_lowest_average_rank_match(last_match_id=None):
     if not publicMatches:
         return None
 
-    return publicMatches[0], last_match_id
-
-
-def get_random_match_and_replay_url(latest_match_id):
-    matchResponse = None
-    while not matchResponse:
-        publicMatch, new_latest_match_id = get_lowest_average_rank_match(
-            latest_match_id
-        )
-        latest_match_id = new_latest_match_id
-        match_id = publicMatch["match_id"]
-        cluster = publicMatch.get("cluster")
-
-        matchUrl = f"https://api.opendota.com/api/matches/{match_id}"
-        matchResponse = requests.get(matchUrl).json()
-
-    replay_salt = matchResponse.get("replay_salt")
-
-    if not cluster or not replay_salt:
-        return None, None, new_latest_match_id
-
-    replay_url = (
-        f"http://replay{cluster}.valve.net/570/{match_id}_{replay_salt}.dem.bz2"
-    )
-    return matchResponse, replay_url, new_latest_match_id
-
-
-def generate_loadscreen_image(match, heroes):
-    players = match.get("players")
-    player_hero_ids = [player["hero_id"] for player in players]
-    filtered_heroes = [
-        next(hero for hero in heroes if hero["id"] == hero_id)
-        for hero_id in player_hero_ids
-    ]
-
-    image = Image.open("background_white.jpg")
-    draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("arial.ttf", 40)
-
-    draw.text(
-        (100, 540),
-        "Voting closes and next game starts in 45 seconds!",
-        (0, 0, 0),
-        font=font,
-    )
-
-    top = 50
-    left = 50
-    # Hero names
-    for x in range(10):
-        position = (left, top)
-
-        draw.text(position, filtered_heroes[x]["localized_name"], (0, 0, 0), font=font)
-
-        if x == 4:
-            top += 750
-            left = 50
-        else:
-            left += 300
-
-    # Vote names
-    # top = 130
-    # left = 50
-    # for x in range(10):
-    #     position = (left, top)
-
-    #     draw.text(position, f"!vote {x + 1}", (0, 0, 0), font=font)
-
-    #     if x == 4:
-    #         top += 750
-    #         left = 50
-    #     else:
-    #         left += 300
-
-    current_dir = os.getcwd()
-    imageName = f'tmpImg_{match["match_id"]}.png'
-    image_path = os.path.join(current_dir, imageName)
-
-    image.save(image_path)
-
-    # OBS Stuff
-    ws = obsws("localhost", 4455, OBS_WEBSOCKET_PASSWORD)
-    ws.connect()
-
-    betweenGamesSceneName = "BetweenGames"
-    dotaClientSceneName = "Dota2Client"
-    input_name = "LoadingScreenImage"
-
-    inputSettings = {"file": image_path}
-
-    ws.call(
-        obsrequests.SetInputSettings(
-            inputName=input_name, inputSettings=inputSettings, overlay=True
-        )
-    )
-
-    ws.call(obsrequests.SetCurrentPreviewScene(sceneName=betweenGamesSceneName))
-    ws.call(obsrequests.TriggerStudioModeTransition())
-
-    time.sleep(25)
-
-    ws.call(obsrequests.SetCurrentPreviewScene(sceneName=dotaClientSceneName))
-    ws.call(obsrequests.TriggerStudioModeTransition())
-    ws.disconnect()
-
-
-def get_irc_socket_object():
-    server = "irc.chat.twitch.tv"
-    port = 6667
-    irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    irc.connect((server, port))
-    irc.send(f"PASS {TWITCHTOKEN}\n".encode("utf-8"))
-    irc.send(f"NICK {TWITCHCHANNELNAME}\n".encode("utf-8"))
-    irc.send(f"JOIN #{TWITCHCHANNELNAME}\n".encode("utf-8"))
-    return irc
-
-
-def read_chat(process):
-    irc = get_irc_socket_object()
-    irc.settimeout(1)
-    latestFollowingCommandTime = time.time() - 30
-
-    while process.is_running() is True:
-        try:
-            # Get the chat line
-            response = irc.recv(2048).decode("utf-8")
-
-            # Respond to pings from the server, required to keep the connection alive
-            if response.startswith("PING"):
-                irc.send("PONG\n".encode("utf-8"))
-                continue
-
-            responsePattern = re.compile(r":(.*?)!.*?:([^:]+)")
-
-            print(response)
-
-            match = responsePattern.search(response)
-
-            if match:
-                logger.debug(f"Recieves chat message: {response}")
-                name = match.group(1)
-                message = match.group(2).strip()
-
-                followCommand = re.search(r"(!f\s*|f\s+)(10|[1-9])", message)
-                if followCommand and latestFollowingCommandTime < time.time() - 30:
-                    number = f"{followCommand.group(2)}"
-                    print(number)
-                    pydirectinput.press(number)
-                    latestFollowingCommandTime = time.time()
-            else:
-                logger.debug(f"Could not read chat message: {response}")
-        except socket.timeout:
-            continue
-
-    irc.close()
-
-
-def extract_number(s):
-    # Search for a number between 1 and 10
-    match = re.search(r"\b(10|[1-9])\b", s)
-    if match:
-        return int(match.group(0))
-    else:
-        return 0
+    return publicMatches, last_match_id
 
 
 if __name__ == "__main__":
