@@ -29,6 +29,31 @@ console_handler.setFormatter(formatter)
 
 logger.addHandler(console_handler)
 
+REGION_MAP = {
+    1: "US WEST",
+    2: "US EAST",
+    3: "EUROPE",
+    5: "SINGAPORE",
+    6: "DUBAI",
+    7: "AUSTRALIA",
+    8: "STOCKHOLM",
+    9: "AUSTRIA",
+    10: "BRAZIL",
+    11: "SOUTHAFRICA",
+    12: "PW SHANGHAI",
+    13: "PW UNICOM",
+    14: "CHILE",
+    15: "PERU",
+    16: "INDIA",
+    17: "PW GUANGDONG",
+    18: "PW ZHEJIANG",
+    19: "JAPAN",
+    20: "PW WUHAN",
+    25: "PW TIANJIN",
+    37: "TAIWAN",
+    38: "ARGENTINA",
+}
+
 ALLOWED_REGION_IDS = {1, 2, 3, 8, 9}  # US WEST, US EAST, EUROPE, STOCKHOLM, AUSTRIA
 
 load_dotenv()
@@ -277,3 +302,23 @@ def get_matches(last_match_id=None):
 
 if __name__ == "__main__":
     main()
+
+# pyinstaller --add-data "heroData.json;." --add-data "local_settings.py;." --add-data "background_white.jpg;."  main.py
+
+
+# Available Input Kinds:
+# image_source
+# color_source
+# slideshow
+# browser_source
+# ffmpeg_source
+# text_gdiplus
+# text_ft2_source
+# vlc_source
+# monitor_capture
+# window_capture
+# game_capture
+# dshow_input
+# wasapi_input_capture
+# wasapi_output_capture
+# wasapi_process_output_capture
