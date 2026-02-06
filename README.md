@@ -1,22 +1,30 @@
-# Dota 2 demo replayer
+# Dota 2 replay downloader
 
-With a lot of help from Chat GPT.
+This project downloads recent Dota 2 replay demos from OpenDota and stores the
+decompressed `.dem` files locally.
 
-This downloads Dota 2 replays and replays them in a loop.
+## Requirements
 
-## TODO
+- Python 3.10+
+- OpenDota API access (public endpoints)
 
-### Major
+## Setup
 
-- Add ability to vote for player perspective between games using Twitch chat
-  - Should include player heroes
-  - Should include player MMR
-- Make the loading screen look reasonably good
-- Takes too long after ending a game before Dota quits
+1. Create a `.env` file or set the following environment variables:
+   - `REPLAY_PATH`: directory where `.dem` files should be stored.
+   - `REPLAY_CSV`: CSV file that tracks downloaded match IDs.
+2. Install dependencies:
+   - `pip install -r requirements.txt` (or `pip install requests python-dotenv`).
 
-### Minor
+## Run
 
-- Fix way to install new version while dota is playing
-- Predict winner with channel points
-- Show fight stats after a fight?
-- Improve logging
+```bash
+python main.py
+```
+
+The script will:
+
+- Fetch recent public matches from OpenDota.
+- Filter matches by rank and region.
+- Download and decompress replay demos.
+- Track downloaded match IDs in the CSV file.
