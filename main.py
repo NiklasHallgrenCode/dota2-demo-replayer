@@ -1,16 +1,14 @@
+import bz2
+import csv
 import json
+import logging
 import os
 import time
 import traceback
-from dotenv import load_dotenv
-import requests
-import bz2
-import logging
 from datetime import date
-import csv
 
-for name, value in os.environ.items():
-    print("{0}: {1}".format(name, value))
+import requests
+from dotenv import load_dotenv
 
 today = date.today()
 formatted_date = today.strftime("%Y-%m-%d")
